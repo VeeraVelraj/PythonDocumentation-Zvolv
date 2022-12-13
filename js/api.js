@@ -67,7 +67,7 @@ function functionCode(data) {
     var functionTitleObject = data[i].inputs.find(
       (input) => input.label == "Title"
     );
-    div.innerHTML = `<div class="row"><div class="col-md-12 left-align"><h2 class="dark-text" style="text-transform:capitalize" id="functionTitle">${functionTitleObject.value}<hr/></h2></div></div><div class="intro2 clearfix"><p><i class="fa fa-python" id="functionCode">${functionCodeObject.value}</i></a></p></div><hr/><h4>Function Definition</h4><p id="functionDefinition">${functionDefinitionObject.value}</p><h4>Sample</h4><p id="sampleCode">${sampleCodeObject.value}</p>  <h4>Parameter</h4><p id="functionParameter">${functionParameterObject.value}</p> <h4>Output</h4><p id="functionParameter">${functionOutputObject.value}</p><a href="#" target="_blank" class="btn btn-primary">View Sample Code</a><a href="#" class="btn btn-info">Ask a Question</a><hr />`;
+    div.innerHTML = `<div class="row"><div class="col-md-12 left-align"><h2 class="dark-text" style="text-transform:capitalize" id="functionTitle">${functionTitleObject.value}<hr/></h2></div></div><div class="intro2 clearfix" style="word-break:break-all"><p><i class="fa fa-python" id="functionCode">${functionCodeObject.value}</i></a></p></div><hr/><h4>Function Definition</h4><p id="functionDefinition">${functionDefinitionObject.value}</p><h4>Sample</h4><p id="sampleCode">${sampleCodeObject.value}</p>  <h4>Parameter</h4><p id="functionParameter">${functionParameterObject.value}</p> <h4>Output</h4><p id="functionParameter">${functionOutputObject.value}</p><a href="#" target="_blank" class="btn btn-primary">View Sample Code</a><a href="#" class="btn btn-info">Ask a Question</a><hr />`;
 
     mainContainer.appendChild(div);
   }
