@@ -18,6 +18,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
       console.log(res.data.elements);
       functionName(res.data.elements);
       functionCode(res.data.elements);
+      functionOutput(res.data.elements);
+      functionTitle(res.data.elements);
     })
     .catch((err) => console.log(err));
 });
@@ -59,7 +61,13 @@ function functionCode(data) {
     var functionParameterObject = data[i].inputs.find(
       (input) => input.label == "Parameter"
     );
-    div.innerHTML = `<div class="row"><div class="col-md-12 left-align"><h2 class="dark-text">Function Definition<hr/></h2></div></div><div class="intro2 clearfix"><p><i class="fa fa-python" id="functionCode">${functionCodeObject.value}</i></a></p></div><hr/><h4>Function Definition</h4><p id="functionDefinition">${functionDefinitionObject.value}</p><h4>Sample</h4><p id="sampleCode">${sampleCodeObject.value}</p>  <h4>Parameter</h4><p id="functionParameter">${functionParameterObject.value}</p><a href="#" target="_blank" class="btn btn-primary">View Sample Code</a><a href="#" class="btn btn-info">Ask a Question</a><hr />`;
+    var functionOutputObject = data[i].inputs.find(
+      (input) => input.label == "Output"
+    );
+    var functionTitleObject = data[i].inputs.find(
+      (input) => input.label == "Title"
+    );
+    div.innerHTML = `<div class="row"><div class="col-md-12 left-align"><h2 class="dark-text" style="text-transform:capitalize" id="functionTitle">${functionTitleObject.value}<hr/></h2></div></div><div class="intro2 clearfix"><p><i class="fa fa-python" id="functionCode">${functionCodeObject.value}</i></a></p></div><hr/><h4>Function Definition</h4><p id="functionDefinition">${functionDefinitionObject.value}</p><h4>Sample</h4><p id="sampleCode">${sampleCodeObject.value}</p>  <h4>Parameter</h4><p id="functionParameter">${functionParameterObject.value}</p> <h4>Output</h4><p id="functionParameter">${functionOutputObject.value}</p><a href="#" target="_blank" class="btn btn-primary">View Sample Code</a><a href="#" class="btn btn-info">Ask a Question</a><hr />`;
 
     mainContainer.appendChild(div);
   }
@@ -100,6 +108,33 @@ function functionParameter(data) {
       (input) => input.label == "Parameter"
     );
     div.innerHTML = "" + functionParameterObject.value;
+    mainContainer.appendChild(div);
+  }
+}
+
+
+function functionOutput(data) {
+  var mainContainer = document.getElementById("functionOutput");
+  for (var i = 0; i < data.length; i++) {
+    var div = document.createElement("div");
+
+    var functionOutputObject = data[i].inputs.find(
+      (input) => input.label == "Output"
+    );
+    div.innerHTML = "" + functionOutputObject.value;
+    mainContainer.appendChild(div);
+  }
+}
+
+function functionTitle(data) {
+  var mainContainer = document.getElementById("functionTitle");
+  for (var i = 0; i < data.length; i++) {
+    var div = document.createElement("div");
+
+    var functionTitleObject = data[i].inputs.find(
+      (input) => input.label == "Title"
+    );
+    div.innerHTML = "" + functionTitleObject.value;
     mainContainer.appendChild(div);
   }
 }
