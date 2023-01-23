@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     .then((res) => res.json())
     .then((res) => {
       console.log(res.data.elements);
+      
       functionName(res.data.elements);
       functionCode(res.data.elements);
       functionOutput(res.data.elements);
@@ -128,6 +129,7 @@ function functionOutput(data) {
 
 function functionTitle(data) {
   var mainContainer = document.getElementById("functionTitle");
+ 
   for (var i = 0; i < data.length; i++) {
     var div = document.createElement("div");
 
