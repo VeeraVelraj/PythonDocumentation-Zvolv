@@ -1,0 +1,297 @@
+[
+    {
+      "WriteFormData": {
+        "Outputs": [
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] = \"Active\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "Wrong Invoice",
+            "ID": "p1",
+            "Stage": "WFE_zsd3sdpt9m"
+          },
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] = \"Assigned\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "L1 Approval",
+            "ID": "p1",
+            "Stage": "Self"
+          }
+        ]
+      },
+      "Trigger": {
+        "TriggerEquation": "T1 and T2",
+        "Triggers": [
+          {
+            "ID": "T1",
+            "Stage": "Self",
+            "Formname": "Self",
+            "FieldName": [
+              "Approval Status"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "Seek Clarification"
+            ],
+            "MasterSearchField": null
+          },
+          {
+            "ID": "T2",
+            "Stage": "Self",
+            "Formname": "Self",
+            "FieldName": [
+              "Reason for Credit"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "Wrong Invoice"
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      },
+      "BotInputData": {
+        "Inputs": [
+          {
+            "ID": "I1",
+            "Stage": "Self",
+            "Formname": "L1 Approval",
+            "FieldName": [
+              
+            ],
+            "RecurseField": false,
+            "Value": [
+              
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      }
+    },
+    {
+      "WriteFormData": {
+        "Outputs": [
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] = \"Active\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "System Outage",
+            "ID": "p1",
+            "Stage": "WFE_xb36g9p1x2"
+          },
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] = \"Assigned\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "L1 Approval",
+            "ID": "p1",
+            "Stage": "Self"
+          }
+        ]
+      },
+      "Trigger": {
+        "TriggerEquation": "T3 and T4",
+        "Triggers": [
+          {
+            "ID": "T3",
+            "Stage": "Self",
+            "Formname": "Self",
+            "FieldName": [
+              "Approval Status"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "Seek Clarification"
+            ],
+            "MasterSearchField": null
+          },
+          {
+            "ID": "T4",
+            "Stage": "Self",
+            "Formname": "Self",
+            "FieldName": [
+              "Reason for Credit"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "System Outage"
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      },
+      "BotInputData": {
+        "Inputs": [
+          {
+            "ID": "I1",
+            "Stage": "Self",
+            "Formname": "L1 Approval",
+            "FieldName": [
+              
+            ],
+            "RecurseField": false,
+            "Value": [
+              
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      }
+    },
+    {
+      "WriteFormData": {
+        "Outputs": [
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] = \"Active\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "Good Will",
+            "ID": "p1",
+            "Stage": "WFE_o2plb4sas5"
+          },
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] = \"Assigned\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "L1 Approval",
+            "ID": "p1",
+            "Stage": "Self"
+          }
+        ]
+      },
+      "Trigger": {
+        "TriggerEquation": "T5 and T6",
+        "Triggers": [
+          {
+            "ID": "T5",
+            "Stage": "Self",
+            "Formname": "Self",
+            "FieldName": [
+              "Approval Status"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "Seek Clarification"
+            ],
+            "MasterSearchField": null
+          },
+          {
+            "ID": "T6",
+            "Stage": "Self",
+            "Formname": "Self",
+            "FieldName": [
+              "Reason for Credit"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "Good Will"
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      },
+      "BotInputData": {
+        "Inputs": [
+          {
+            "ID": "I1",
+            "Stage": "Self",
+            "Formname": "L1 Approval",
+            "FieldName": [
+              
+            ],
+            "RecurseField": false,
+            "Value": [
+              
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      }
+    },
+    {
+      "WriteFormData": {
+        "Outputs": [
+          {
+            "Code": "import json\ntsk_Info = COM.get_all_tasks_on_cardID(subID)\nfor task_id in json.loads(tsk_Info)[\"data\"][\"elements\"]:\n\tt_ID = task_id[\"cardID\"]\noutSide_taskBody = {}\noutSide_taskBody[\"Status\"] =\"Active\"\noutSide_taskBody[\"TaskID\"] = t_ID\nCOM.edit_task_for_workflow(\"\",\"\", outSide_taskBody=outSide_taskBody)\nCOM.set_estimate_date(body[\"WorkflowID\"],\"\",\"\")",
+            "Value": [
+              
+            ],
+            "EditTask": true,
+            "FieldName": [
+              
+            ],
+            "Formname": "L2 Approval",
+            "ID": "p1",
+            "Stage": "WFE_onanlpotem"
+          }
+        ]
+      },
+      "Trigger": {
+        "TriggerEquation": "T7",
+        "Triggers": [
+          {
+            "ID": "T7",
+            "Stage": "Self",
+            "Formname": "L1 Approval",
+            "selfForm": true,
+            "FieldName": [
+              "Approval Status"
+            ],
+            "ValueType": "VALUE",
+            "Value": [
+              "Additional Approval"
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      },
+      "BotInputData": {
+        "Inputs": [
+          {
+            "ID": "I1",
+            "Stage": "Self",
+            "Formname": "L1 Approval",
+            "FieldName": [
+              
+            ],
+            "RecurseField": false,
+            "Value": [
+              
+            ],
+            "MasterSearchField": null
+          }
+        ]
+      }
+    }
+  ]
