@@ -14,15 +14,32 @@ async function addFunction() {
     const key7 = document.getElementById("key7").value;
 
     console.log(key1);
+
+    {
+      ("FormData");
+      {
+        ("type");
+        "KEY_LABELS", "data";
+        {
+          ("Title");
+          key1;
+        }
+      }
+    }
+
+    console.log(key1)
     const data = {
-      "Title": key1,
-      "Function Name": key2,
-      "Function Code": key3,
-      "Function Definition": key4,
-      "Example Code": key5,
-      "Parameter": key6,
-      "Output": key7,
+      76473: key1,
+      76474: key2,
+      76475: key3,
+      76476: key4,
+      76477: key5,
+      76478: key6,
+      76479: key7,
+      76780: null,
+      OverrideMetaData: false,
     };
+
     console.log(key1);
     console.log(key2);
     console.log(key3);
@@ -31,7 +48,7 @@ async function addFunction() {
     console.log(key6);
     console.log(key7);
     await fetch(
-      `https://app.zvolv.com/rest/v17/lite/forms/181445/submissions/`,
+      `https://app.zvolv.com/rest/v17/98NCMBD2KBZ4R/forms/181445/submissions`,
       {
         method: "POST",
         headers: {
@@ -46,8 +63,8 @@ async function addFunction() {
       .then((res) => res.json())
       .then((response) => {
         responseContainer.innerHTML =
-          "Data has been successfully pushed to the database: " +
-          JSON.stringify(response);
+          "Data has been successfully pushed to the database: "
+          
       })
       .catch((error) => {
         responseContainer.innerHTML =
