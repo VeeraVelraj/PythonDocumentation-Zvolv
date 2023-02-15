@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-
+    <script src="add_function.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -107,7 +107,6 @@
       }
 
       .user-details .input-box textarea {
-        
         width: 100%;
         outline: none;
         font-size: 16px;
@@ -130,8 +129,7 @@
         font-size: 20px;
         font-weight: 500;
       }
-     
-     
+
       form .button {
         height: 45px;
         margin: 35px 0;
@@ -255,20 +253,31 @@
     <div class="container">
       <div class="title">Add Functions</div>
       <div class="content">
-        <form action="#">
+        <form action="#" id="form">
           <div class="user-details">
             <div class="input-box">
               <span class="details">Title</span>
-              <input type="text" placeholder="Add Function Title" required />
+              <input
+                type="text"
+                id="key1"
+                placeholder="Add Function Title"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Function Name</span>
-              <input type="text" placeholder="Add Function Name" required />
+              <input
+                type="text"
+                id="key2"
+                placeholder="Add Function Name"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Function Code</span>
               <textarea
                 placeholder="Enter Function Code"
+                id="key3"
                 rows="3"
                 cols="40"
                 required
@@ -278,28 +287,98 @@
               <span class="details">Function Definition</span>
               <input
                 type="text"
+                id="key4"
                 placeholder="Enter Function Definition"
                 required
               />
             </div>
             <div class="input-box">
               <span class="details">Sample Code</span>
-              <input type="text" placeholder="Enter Sample Code" required />
+              <input
+                type="text"
+                id="key5"
+                placeholder="Enter Sample Code"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Parameter</span>
-              <input type="text" placeholder="Enter Parameter" required />
+              <input
+                type="text"
+                id="key6"
+                placeholder="Enter Parameter"
+                required
+              />
             </div>
             <div class="input-box">
               <span class="details">Output</span>
-              <input type="text" placeholder="Enter Output" required />
+              <input
+                type="text"
+                id="key7"
+                placeholder="Enter Output"
+                required
+              />
             </div>
           </div>
           <div class="button">
             <input type="submit" value="Add Function" />
           </div>
         </form>
+        <div id="response"></div>
       </div>
     </div>
   </body>
+  <!-- <script>
+    console.log("DOM fully loaded and parsed");
+    async function addFunction() {
+      const form = document.getElementById("form");
+      const responseContainer = document.getElementById("response");
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const key1 = document.getElementById("key1").value;
+        const key2 = document.getElementById("key2").value;
+        const key3 = document.getElementById("key3").value;
+        const key4 = document.getElementById("key4").value;
+        const key5 = document.getElementById("key5").value;
+        const key6 = document.getElementById("key6").value;
+        const key7 = document.getElementById("key7").value;
+        const data = {
+          key1,
+          key2,
+          key3,
+          key4,
+          key5,
+          key6,
+          key7
+        };
+        console.log(key1)
+        const apiUrl = `http://app.zvolv.com/rest/v17/449VZ2DY54AF3/forms/181445/submissions/${id}`;
+        fetch(apiUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": " application/json",
+            jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBwLnp2b2x2LmNvbVwvcmVzdCIsImlhdCI6MTY3NTMzMTY2OSwibmJmIjoxNjc1MzMxNjY5LCJleHAiOjE2NzU5MzY0NjksInVzZXJpZCI6MSwib3JnenZpY2VpZCI6MzAwMDI3OTA4NCwiZW1haWxpZCI6InZlZXJha3VtYXJ2ZWxyYWpAZ21haWwuY29tIn0.rkvD5du5k2MDM6jlgn7DjbLG2ujKd7yuLVpaYcV24LI",
+            businessDomain: "project_tracker",
+            businessTagID: "98NCMBD2KBZ4R",
+          },
+        })
+          .then((res) => res.json())
+          .then((response) => {
+            responseContainer.innerHTML =
+              "Data has been successfully pushed to the database: " +
+              JSON.stringify(response);
+          })
+          .catch((error) => {
+            responseContainer.innerHTML =
+              "An error occurred while pushing data to the database: " + error;
+          });
+      });
+    }
+  </script> -->
+
+  <script>
+    addEventListener("DOMContentLoaded", (event) => {
+      addFunction();
+    });
+  </script>
 </html>
