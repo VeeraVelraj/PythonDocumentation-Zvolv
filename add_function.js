@@ -13,21 +13,18 @@ async function addFunction() {
     const key6 = document.getElementById("key6").value;
     const key7 = document.getElementById("key7").value;
 
-    console.log(key1);
+    // {
+    //   ("FormData");
+    //   {
+    //     ("type");
+    //     "KEY_LABELS", "data";
+    //     {
+    //       ("Title");
+    //       key1;
+    //     }
+    //   }
+    // }
 
-    {
-      ("FormData");
-      {
-        ("type");
-        "KEY_LABELS", "data";
-        {
-          ("Title");
-          key1;
-        }
-      }
-    }
-
-    console.log(key1)
     const data = {
       76473: key1,
       76474: key2,
@@ -40,13 +37,6 @@ async function addFunction() {
       OverrideMetaData: false,
     };
 
-    console.log(key1);
-    console.log(key2);
-    console.log(key3);
-    console.log(key4);
-    console.log(key5);
-    console.log(key6);
-    console.log(key7);
     await fetch(
       `https://app.zvolv.com/rest/v17/98NCMBD2KBZ4R/forms/181445/submissions`,
       {
@@ -63,8 +53,7 @@ async function addFunction() {
       .then((res) => res.json())
       .then((response) => {
         responseContainer.innerHTML =
-          "Data has been successfully pushed to the database: "
-          
+          "Data has been successfully pushed to the database: ";
       })
       .catch((error) => {
         responseContainer.innerHTML =
