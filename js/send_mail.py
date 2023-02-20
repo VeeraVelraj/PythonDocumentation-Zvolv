@@ -1,52 +1,27 @@
 import json
-from python.classes.modules.zmodule_v2.zutility.elements_casting import ElementCasting
-from python.classes.modules.zmodule_v2.zutility import random_password_generator,public_links, user_management, communications,data_copying, elements_utility
-from python.classes.modules.zmodule_v2 import zsubmissions, ztasks, zautomation
-from python.classes.modules.common.loggerClass import LoggerClass as LogClass
-
-onboarding_forms = {
-       "63aadafa8e5534f781ea66d8": {          
-        "User Name": "EID_c3u82fkx7y",
-        "User ID": "EID_di7rzsct7b",
-        "User Email": "EID_j78oyayf95"      
-    }
-}
-
-user_id = None
-if automation_inputs["formID"] in onboarding_forms:
-    user_id = automation_inputs[onboarding_forms[automation_inputs["formID"]]["User ID"]]
-user_email = None
-user_id = None
-user_name = None
-
-public_submission_links = {}
-
-for form, elements in onboarding_forms.items():
-    task_form_submission = zsubmissions.search_submissions(form, ["User ID"], [user_id])
-    if task_form_submission:
-        task_form_submission_id = task_form_submission[0]["id"]
-        public_submission_links[form]=public_links.get_public_submission_link(task_form_submission_id)
-
-if form == "63aadafa8e5534f781ea66d8":
-    user_name_element = elements_utility.get_form_element(task_form_submission[0]["elements"], "elementId", elements["User Name"])
-    user_name_mail_element = ElementCasting.convert_element_to_edit_text(user_name_element)
-
-    user_id_element = elements_utility.get_form_element(task_form_submission[0]["elements"], "elementId", elements["User ID"])
-    user_id_mail_element = ElementCasting.convert_element_to_edit_text(user_id_element)
-
-    user_email_element = elements_utility.get_form_element(task_form_submission[0]["elements"], "elementId", elements["User Email"])
-    user_email_mail_element = ElementCasting.convert_element_to_edit_text(user_email_element)
-
-email_variable = {
-    "User Email": user_email,
-    "User ID": user_id,
-    "User Name": user_name
-}
-
-LogClass.warning("script-logs", {"message": "Here you can see the Email ID","response": user_email})
-subject_template_id = "2"
-message_template_id = "3"
-subject_configs = {"template_id": subject_template_id, "variables": email_variable}
-message_cofnigs = {"template_id": message_template_id, "variables": email_variable}
-email_response = communications.send_mail_to_roles([user_email], subject_configs, message_cofnigs)
-LogClass.warning("script-logs", {"message": "Email Response Send Mail {}".format(automation_inputs["formID"]), "response": email_response})
+from python.classes.modules.common import common_util
+input_data={}
+master_id = COM.get_form_ids("SCC Head Required Parameters Master")
+stakeholder_master_id = COM.get_form_ids("Stakeholder Mapping Master")
+stakeholder_master_data = common_util.fetech_master_data(COM, stakeholder_master_id, key="SCC",val=common_util.formsearch_to_textfield(botInputDict["I1:SCC"]))
+if stakeholder_master_data:
+    for head_name in stakeholder_master_data:
+        input_data = {
+            "SCC": botInputDict["I1:SCC"],
+            "Parameters": common_util.generate_multiselect_object([botInputDict["I1:Parameter"]]),
+            "Units":common_util.generate_multiselect_object([botInputDict["I1:Unit"]]),
+				   "Lower Limit": botInputDict["I1:Lower Limit"],
+				   "Upper Limit" : botInputDict["I1:Upper Limit"],
+				   "Old SCC" : common_util.generate_multiselect_object([botInputDict["I1:SCC"]]),
+				   "Old Parameters" : common_util.generate_multiselect_object([botInputDict["I1:Parameter"]]),
+				   "Applicable" : "Yes",
+                   "EHS Manager":json.loads(head_name["EHS Manager Name"]), 
+                   "User":stakeholder_master_data[0]["SCC Head Name"],
+                   "wid": body["WorkflowID"]
+                   }
+        resp = COM.form_submission_using_NEW_API(master_id,input_data, donotcall="true")
+        block_task = []
+wid = body["WorkflowID"]
+task_data = common_util.bulkWorkflowEdit({"title": "Update Parameter Limits"}, {"task_data": {"Status": "Locked"}})
+block_task.append(task_data)
+bulk_edit = COM.bulkWFStagesEdit(wid, block_task)

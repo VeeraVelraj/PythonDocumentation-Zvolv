@@ -43,7 +43,7 @@ async function addFunction() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBwLnp2b2x2LmNvbVwvcmVzdCIsImlhdCI6MTY3NjIwODI3NSwibmJmIjoxNjc2MjA4Mjc1LCJleHAiOjE2NzY4MTMwNzUsInVzZXJpZCI6MSwib3JnenZpY2VpZCI6MzAwMDI3OTA4NCwiZW1haWxpZCI6InZlZXJha3VtYXJ2ZWxyYWpAZ21haWwuY29tIn0.P2X6O_-gJIAzi7rZXbGA9sqr-Tam5NX5l0V0dNGzSdM",
+          jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBwLnp2b2x2LmNvbVwvcmVzdCIsImlhdCI6MTY3Njg4Nzc1OCwibmJmIjoxNjc2ODg3NzU4LCJleHAiOjE2Nzc0OTI1NTgsInVzZXJpZCI6MSwib3JnenZpY2VpZCI6MzAwMDI3OTA4NCwiZW1haWxpZCI6InZlZXJha3VtYXJ2ZWxyYWpAZ21haWwuY29tIn0.WDtB1bjIByCaoDS8pmuKSJR9SQG04rHPbfsly2MaJvk",
           businessDomain: "project_tracker",
           businessTagID: "98NCMBD2KBZ4R",
         },

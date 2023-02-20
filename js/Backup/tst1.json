@@ -1,0 +1,38 @@
+{
+    "StaticConfigs": {
+        "MasterName1": "SCC Head Required Parameters Master"
+    },
+    "WriteFormData": {
+        "Outputs": [
+            {
+                "FieldName": [],
+                "Code": "import json\nfrom python.classes.modules.common import common_util\nfrom python.classes.modules.bots import bot_functions_library\nget_form_details_id = bot_functions_library.search_form_by_title(COM, Bot[\"StaticConfigs\"][\"MasterName1\"])\ninput_data = {}\nstakeholder_master_id = bot_functions_library.search_form_by_title(COM, \"Stakeholder Mapping Master\")\nstakeholder_master_data = common_util.fetech_master_data(COM, stakeholder_master_id, key=\"SCC\",val=common_util.formsearch_to_textfield(botInputDict[\"I1:SCC\"]))\nif stakeholder_master_data:\n\tfor i in stakeholder_master_data:\n\t\tehs_manager = i[\"EHS Manager Name\"]\n        scc_head = i[\"SCC Head Name\"]\ninput_data.update({\"SCC\": botInputDict[\"I1:SCC\"], \"Parameters\": common_util.generate_multiselect_object([botInputDict[\"I1:Parameter\"]]),\"Units\":common_util.generate_multiselect_object([botInputDict[\"I1:Unit\"]]),\"Lower Limit\": botInputDict[\"I1:Lower Limit\"], \"Upper Limit\" : botInputDict[\"I1:Upper Limit\"],\"Old SCC\" : common_util.generate_multiselect_object([botInputDict[\"I1:SCC\"]]),\"Old Parameters\" : common_util.generate_multiselect_object([botInputDict[\"I1:Parameter\"]]), \"Applicable\" : \"Yes\",\"EHS Manager\":ehs_manager, \"User\":scc_head,\"wid\": body[\"WorkflowID\"]})\nresp = COM.form_submission_using_NEW_API(get_form_details_id, input_data=input_data, donotcall=\"false\")\nblock_task = []\nwid = body[\"WorkflowID\"]\ntask_data = common_util.bulkWorkflowEdit({\"title\": \"Update Parameter Limits\"}, {\"task_data\": {\"Status\": \"Locked\"}})\nblock_task.append(task_data)\nbulk_edit = COM.bulkWFStagesEdit(wid, block_task)",
+                "Variable": {},
+                "Stage": "Self",
+                "ID": "p1",
+                "Formname": "Self"
+            }
+        ]
+    },
+    "Trigger": {
+        "TriggerEquation": "true",
+        "Triggers": []
+    },
+    "BotInputData": {
+        "Inputs": [
+            {
+                "FieldName": [
+                    "SCC",
+                    "Parameter",
+                    "Unit",
+                    "Upper Limit",
+                    "Lower Limit",
+                    "User"
+                ],
+                "ID": "I1",
+                "Stage": "Self",
+                "Formname": "Self"
+            }
+        ]
+    }
+}
