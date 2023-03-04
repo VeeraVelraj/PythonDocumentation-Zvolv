@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       headers: {
         Accept: "application/json",
         "Content-Type": " application/json",
-        jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBwLnp2b2x2LmNvbVwvcmVzdCIsImlhdCI6MTY3Njg4Nzc1OCwibmJmIjoxNjc2ODg3NzU4LCJleHAiOjE2Nzc0OTI1NTgsInVzZXJpZCI6MSwib3JnenZpY2VpZCI6MzAwMDI3OTA4NCwiZW1haWxpZCI6InZlZXJha3VtYXJ2ZWxyYWpAZ21haWwuY29tIn0.WDtB1bjIByCaoDS8pmuKSJR9SQG04rHPbfsly2MaJvk",
+        jwt: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBwLnp2b2x2LmNvbVwvcmVzdCIsImlhdCI6MTY3NzkxNTA4MSwibmJmIjoxNjc3OTE1MDgxLCJleHAiOjE2Nzg1MTk4ODEsInVzZXJpZCI6MSwib3JnenZpY2VpZCI6MzAwMDI3OTA4NCwiZW1haWxpZCI6InZlZXJha3VtYXJ2ZWxyYWpAZ21haWwuY29tIn0.QrQe-5MvaO586zHn5EWn1ztx2p-7gNvqXj3Ggl4Ft6I",
         businessDomain: "project_tracker",
         businessTagID: "98NCMBD2KBZ4R",
       },
