@@ -13,6 +13,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
       },
     }
   )
+
+
     .then((res) => res.json())
     .then((res) => {
       console.log(res.data.elements);
